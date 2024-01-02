@@ -14,6 +14,7 @@ from pathlib import Path
 
 import dask
 import dask.dataframe
+import fastcluster
 import numpy
 import pandas
 import scipy.cluster
@@ -368,7 +369,7 @@ class DetectionParallel(Detection):
                 raha.original.utilities.dataset_profiler(data_dictionary)
                 raha.original.utilities.evaluation_profiler(data_dictionary)
             return raha.original.utilities.get_selected_strategies_via_historical_data(dataset.dictionary,
-                                                                              self.HISTORICAL_DATASETS)
+                                                                                       self.HISTORICAL_DATASETS)
 
         if os.path.exists(strategy_profile_path) and self.PRELOADING:
             sys.stderr.write("Preloading strategies' results, as they have already been run on the dataset\n")
@@ -496,7 +497,9 @@ class DetectionParallel(Detection):
         cells_clusters_k_ce = {k: {} for k in range(2, self.LABELING_BUDGET + 2)}
 
         try:
-            clustering_model = scipy.cluster.hierarchy.linkage(column_features, method="average", metric="cosine")
+            # clustering_model = scipy.cluster.hierarchy.linkage(column_features, method="average", metric="cosine")
+            clustering_model = fastcluster.linkage_vector(column_features, method="single", metric="cosine")
+
             # The bigger our labeling budget is, the more clusters will be generated per column
             for k in clusters_k_c_ce:
                 model_labels = [l - 1 for l in
