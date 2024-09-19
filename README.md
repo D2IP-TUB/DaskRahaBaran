@@ -1,7 +1,13 @@
+
 # Raha and Her Younger Sister Baran
 Detecting and correcting erroneous values are key steps in data cleaning. Error detection/correction systems usually require a user to provide input configurations in the form of integrity constraints or statistical parameters. However, providing a complete, yet correct, set of configurations for each new dataset is tedious and error-prone, as the user has to know about both the dataset and the data cleaning system upfront.
 
 Raha and Baran are new configuration-free error detection and correction systems, respectively. On an abstract level, both Raha and Baran follow the same novel two-step formulation of the error detection/correction task that achieves both high precision and recall. First, each base error detector/corrector generates an initial set of potential data errors/corrections. This step particularly increases the achievable recall bound of the error detection/correction task. Then, Raha/Baran ensembles the output of these base error detectors/correctors into one final set of data errors/corrections in a semi-supervised manner. In fact, Raha/Baran iteratively asks the user to annotate a tuple, i.e., marking/fixing a few data errors. Raha/Baran learns to generalize the user-provided error detection/correction examples to the rest of dataset, accordingly. This step particularly preserves high precision of the error detection/correction task. Furthermore, both systems can leverage historical data to optimize the data cleaning task on the dataset at hand, according to transfer learning. 
+
+# DaskRaha and DaskBaran
+
+The semi-supervised approaches Raha and Baran display competitive performance in general cleaning scenarios. However the effectiveness comes at high runtime costs.
+In this work, we improve the runtimes of Raha and Baran by proposing a new Dask-based parallel architecture that enhances CPU utilization. Further, we propose a shared memory model, allowing concurrently running workers to access shared objects, thereby reducing memory consumption by avoiding duplicated data for each worker. Our approach demonstrates significant runtime improvements compared to the previous versions of Raha and Baran, which are end-to-end holistic systems.
 
 
 ## Installation
