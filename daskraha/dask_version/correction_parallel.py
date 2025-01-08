@@ -806,6 +806,17 @@ class CorrectionParallel(Correction):
             d.corrected_cells.update(corrected_cells_col)
         return d.corrected_cells
 
+    def store_results(self, d):
+        """
+        This method stores the results.
+        """
+        ec_folder_path = os.path.join(d.results_folder, "error-correction")
+        if not os.path.exists(ec_folder_path):
+            os.mkdir(ec_folder_path)
+        pickle.dump(d, open(os.path.join(ec_folder_path, "correction.dataset"), "wb"))
+        if self.VERBOSE:
+            print("The results are stored in {}.".format(os.path.join(ec_folder_path, "correction.dataset")))
+
     def run(self, d):
         shared_df, clean_df = self.initialize_dataframes(dataset_dictionary)
         client = self.start_dask_cluster(

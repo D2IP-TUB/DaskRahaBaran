@@ -69,6 +69,10 @@ class DatasetParallel(Data):
             self.has_been_repaired = True
             self.repaired_path = dataset_dictionary["repaired_path"]
 
+        self.clustering_results = {}
+        
+
+
     def initialize_dataset(
         self,
         create_frame=True,

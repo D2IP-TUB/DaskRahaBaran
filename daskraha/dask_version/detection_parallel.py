@@ -953,6 +953,27 @@ class DetectionParallel(Detection):
         if self.VERBOSE:
             print("Predict (parallel): " + str(end_time - start_time))
 
+    def store_results(self, dataset):
+        """
+        Stores the results of the error detection and data cleaning process.
+    
+        Parameters:
+        - dataset (DatasetParallel): The dataset object containing results.
+        """
+        # Create the results folder path for error detection
+        ed_folder_path = os.path.join(dataset.results_folder, "error-detection")
+        if not os.path.exists(ed_folder_path):
+            os.mkdir(ed_folder_path)
+    
+        # Save the dataset object as a pickle file
+        dataset_path = os.path.join(ed_folder_path, "detection.dataset")
+        with open(dataset_path, "wb") as f:
+            pickle.dump(dataset, f)
+    
+        # Log the results if verbose mode is enabled
+        if self.VERBOSE:
+            print(f"The results are stored in {dataset_path}.")
+
     def run(self, dd):
         # ___Initialize DataFrame, Dask Cluster__#
         shared_df = self.initialize_dataframe(dd["path"])
