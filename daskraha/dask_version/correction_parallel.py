@@ -74,6 +74,9 @@ class CorrectionParallel(Correction):
                     worker.dataset = dp.DatasetParallel.load_shared_dataset(dataset_ref)
                     worker.dataframe = container.shared_dataframe.read()
                     worker.clean_dataframe = container.shared_clean_dataframe.read()
+                    
+                    # Initialize corrected_cells to avoid errors
+                    worker.corrected_cells = {}
 
                 worker.dataset.sampled_tuple = sampled_tuple
                 worker.correct_instance.label_with_ground_truth(
