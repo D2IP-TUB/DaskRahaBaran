@@ -773,13 +773,14 @@ class CorrectionParallel(Correction):
 
             for corrected_chunk in corrected_cells_chunks:
                 corrected_cells.update(corrected_chunk)
-
-        if self.VERBOSE:
-            print(
-                "Column {}, corrected {} cells".format(
-                    column_index, len(worker.corrected_cells[column_index])
-                )
-            )
+                
+        # ToDo: Fix error in the Pipeline -> Baran Step 4
+        #if self.VERBOSE:
+        #    print(
+        #        "Column {}, corrected {} cells".format(
+        #            column_index, len(worker.corrected_cells[column_index])
+        #        )
+        #    )
 
         return corrected_cells
 
