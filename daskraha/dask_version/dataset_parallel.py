@@ -522,4 +522,13 @@ class SharedDataFrame:
         self._values.unlink()
 
 
+    def head(self, n=5):
+        """
+        Returns the first 'n' rows of the shared dataframe.
+        Defaults to 5 rows if n is not provided.
+        """
+        df = self.read()
+        return df.head(n)
+
+
 ########################################
