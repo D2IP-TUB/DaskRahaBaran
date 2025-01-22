@@ -313,7 +313,7 @@ class DetectionParallel(Detection):
                     len(outputted_cells), strategy_name
                 )
             )
-
+            
         return strategy_results
 
     @staticmethod
@@ -481,6 +481,7 @@ class DetectionParallel(Detection):
             if self.VERBOSE:
                 print("Preloading strategies (parallel): " + str(end_time - start_time))
             return strategy_profiles
+            
         if self.SAVE_RESULTS:
             os.mkdir(strategy_profile_path)
 
