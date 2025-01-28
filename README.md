@@ -22,11 +22,8 @@ pip uninstall daskrahabaran
 
 ## Usage
 Running Raha and Baran is simple!
-   - **Interactive data cleaning with Raha and Baran**: If you have a dirty dataset and you want to interatively detect and correct data errors, please check our interactive Jupyter notebooks in the `raha` folder. The Jupyter notebooks provide graphical user interfaces.
+   - **Interactive data cleaning with Raha and Baran**: If you have a dirty dataset and you want to interatively detect and correct data errors, please check our interactive Jupyter notebook in the `raha` folder. The Jupyter notebook provides graphical user interfaces.
    ![Data Annotation](pictures/ui.png)   
-   ![Promising Strategies](pictures/ui_strategies.png)   
-   ![Drill Down](pictures/ui_clusters.png)   
-   ![Dashboard](pictures/ui_dashboard.png) 
    
 Hint:
 The pre-trained model inside the repo is only a sample for using the notebooks. Refrain from relying on that for your experiments. If you need to use the pre-trained models for Baran, please download the Wikipedia revision histories and use Baran to train a model.
